@@ -1,0 +1,8 @@
+// tsconfig.json은 ts->js 컴파일시 옵션설정가능
+{
+    "compilerOptions": {
+        "target": "es5",
+        "module": "commonjs",
+        "strict": true
+    }
+}
