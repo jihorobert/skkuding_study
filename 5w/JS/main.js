@@ -170,6 +170,9 @@ data.forEach(function (a, i) {
     mainSelection.append(mainSelectionImg, mainSelectionDiv);
     flexContainer.appendChild(mainSelection);
 });
+
+
+
 // data.forEach(function (a, i) {
 //   // 1)
 //   let detailImg = document.createElement("img");
