@@ -1,5 +1,7 @@
 import { useNavigate } from "react-router-dom";
 
+// * 질문사항 : types
+
 function MainDetail(props) {
   let navigate = useNavigate();
   return (
@@ -21,7 +23,7 @@ function MainDetail(props) {
           <h2>{props.a.name}</h2>
           <p>Height: {props.a.height} dm</p>
           <p>Weight: {props.a.weight} hg</p>
-          <p>Types: {props.a.types}</p>
+          <p>Types: {props.a.types.map((type) => type.type.name)}</p>
         </div>
       </div>
     </div>
