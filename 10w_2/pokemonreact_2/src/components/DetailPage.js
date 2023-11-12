@@ -35,70 +35,102 @@ function DetailPage(props) {
   const { loading, error, data } = useQuery(GET_POKEMON);
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error!</p>;
+
   return (
-    <div className="detail-wrap" id="detailWrap">
-      <div className="asdf">
+    <div className="flex flex-col items-center p-[30px]">
+      <div className="flex flex-col items-center">
         <img
           src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${props.id}.png`}
           alt={props.name}
-          className="image-item"
+          className="rounded-full border-[2px] border-yellow-300 w-full"
         />
 
         <h1 style={{ color: "white" }}>{props.data[props.id - 1].name}</h1>
-        <div className="table-box">
-          <table className="table-style">
-            {data.pokemon_v2_pokemon.slice(props.id - 1, props.id).map((pokemon) => (
-              <div>
-                <tr>
-                  <th>ID</th>
-                  <td>{pokemon.id}</td>
-                </tr>
-                <tr>
-                  <th>name</th>
-                  <td>{pokemon.name}</td>
-                </tr>
-                <tr>
-                  <th>height</th>
-                  <td>{pokemon.height}</td>
-                </tr>
-                <tr>
-                  <th>base-experience</th>
-                  <td>{pokemon.base_experience}</td>
-                </tr>
-                <tr>
-                  <th>weight</th>
-                  <td>{pokemon.weight}</td>
-                </tr>
-
-                {pokemon.pokemon_v2_pokemonstats.map((stat, index) => (
-                  <tr>
-                    <th>{stat.pokemon_v2_stat.name}</th>
-                    <td>{stat.base_stat}</td>
+        <div className="flex border border-yellow-300 w-[340px] max-w-[900px] rounded-[10px] p-[15px]">
+          <table className="w-full h-full border-collapse border-style-hidden">
+            {data.pokemon_v2_pokemon
+              .slice(props.id - 1, props.id)
+              .map((pokemon) => (
+                <div>
+                  <tr className="text-white">
+                    <th className="border-b border-yellow-300 p-[10px] pl-[25px] text-start">
+                      ID
+                    </th>
+                    <td className="border-b border-yellow-300 p-[10px] pr-[30px] text-end">
+                      {pokemon.id}
+                    </td>
                   </tr>
-                ))}
+                  <tr className="text-white">
+                    <th className="border-b border-yellow-300 p-[10px] pl-[25px] text-start">
+                      name
+                    </th>
+                    <td className="border-b border-yellow-300 p-[10px] pr-[30px] text-end">
+                      {pokemon.name}
+                    </td>
+                  </tr>
+                  <tr className="text-white">
+                    <th className="border-b border-yellow-300 p-[10px] pl-[25px] text-start">
+                      height
+                    </th>
+                    <td className="border-b border-yellow-300 p-[10px] pr-[30px] text-end">
+                      {pokemon.height}
+                    </td>
+                  </tr>
+                  <tr className="text-white">
+                    <th className="border-b border-yellow-300 p-[10px] pl-[25px] text-start">
+                      base-experience
+                    </th>
+                    <td className="border-b border-yellow-300 p-[10px] pr-[30px] text-end">
+                      {pokemon.base_experience}
+                    </td>
+                  </tr>
+                  <tr className="text-white">
+                    <th className="border-b border-yellow-300 p-[10px] pl-[25px] text-start">
+                      weight
+                    </th>
+                    <td className="border-b border-yellow-300 p-[10px] pr-[30px] text-end">
+                      {pokemon.weight}
+                    </td>
+                  </tr>
 
-                <tr>
-                  <th>types</th>
-                  <td>
-                    {pokemon.pokemon_v2_pokemontypes.map((type, index) => (
-                      <>{type.pokemon_v2_type.name}</>
-                    ))}
-                  </td>
-                </tr>
-                <tr>
-                  <th>abilities</th>
-                  <td>
-                    <ul>
-                      {pokemon.pokemon_v2_pokemonabilities.map(
-                        (ability, index) => (
-                          <>{ability.pokemon_v2_ability.name}</>
-                        )
-                      )}
-                    </ul>
-                  </td>
-                </tr>
-              </div>
-            ))}
+                  {pokemon.pokemon_v2_pokemonstats.map((stat, index) => (
+                    <tr className="text-white">
+                      <th className="border-b border-yellow-300 p-[10px] pl-[25px] text-start">
+                        {stat.pokemon_v2_stat.name}
+                      </th>
+                      <td className="border-b border-yellow-300 p-[10px] pr-[30px] text-end">
+                        {stat.base_stat}
+                      </td>
+                    </tr>
+                  ))}
+
+                  <tr className="text-white">
+                    <th className="border-b border-yellow-300 p-[10px] pl-[25px] text-start">
+                      types
+                    </th>
+                    <td className="border-b border-yellow-300 p-[10px] pr-[30px] text-end">
+                      {pokemon.pokemon_v2_pokemontypes.map((type, index) => (
+                        <>{type.pokemon_v2_type.name}</>
+                      ))}
+                    </td>
+                  </tr>
+
+                  <tr className="text-white">
+                    <th className="border-b border-yellow-300 p-[10px] pl-[25px] text-start">
+                      abilities
+                    </th>
+                    <td className="border-b border-yellow-300 p-[10px] pr-[30px] text-end">
+                      <ul>
+                        {pokemon.pokemon_v2_pokemonabilities.map(
+                          (ability, index) => (
+                            <>{ability.pokemon_v2_ability.name}</>
+                          ),
+                        )}
+                      </ul>
+                    </td>
+                  </tr>
+                </div>
+              ))}
           </table>
         </div>
       </div>

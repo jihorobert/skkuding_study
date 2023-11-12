@@ -30,45 +30,12 @@ import {
 
 */
 
-
-
 const client = new ApolloClient({
-  link: createHttpLink({ uri: 'https://beta.pokeapi.co/graphql/v1beta' }),
+  link: createHttpLink({ uri: "https://beta.pokeapi.co/graphql/v1beta" }),
   cache: new InMemoryCache(),
 });
 
-
-// const GET_POKEMON = gql`
-//   query MyQuery {
-//     pokemon_v2_pokemon {
-//       id
-//       name
-//       height
-//       base_experience
-//       weight
-//       pokemon_v2_pokemonstats {
-//         base_stat
-//         pokemon_v2_stat {
-//           name
-//         }
-//       }
-//       pokemon_v2_pokemontypes {
-//         pokemon_v2_type {
-//           name
-//         }
-//       }
-//       pokemon_v2_pokemonabilities {
-//         pokemon_v2_ability {
-//           name
-//         }
-//       }
-//     }
-//   }
-// `;
-
 function App() {
-  
-  
   // axios 이용
   let [dataAll, setDataAll] = useState([]);
   useEffect(() => {
@@ -95,15 +62,20 @@ function App() {
 
   let navigate = useNavigate();
 
-
-
   return (
     // <ApolloClient>
-    <div className="App">
-      <ApolloProvider client = {client}>
-        <nav>
-          <h1 style={{ color: "sandybrown", marginLeft: "340px" }}>
-            <a href="./">Pokemon List</a>
+    <div className="m-0 bg-black pt-10 text-center pd-[100px]">
+      <ApolloProvider client={client}>
+        <nav className="flex h-16 items-center border-b-2 border-yellow-300">
+          {/* <h1 style={{ color: "sandybrown", marginLeft: "340px" }}> */}
+          {/* ml-340 안됨 */}
+          <h1 className="text-sandybrown ml-[340px] text-2xl font-bold no-underline">
+            <a
+              href="./"
+              className="text-yellow-300 no-underline visited:text-yellow-300 hover:text-yellow-300 active:text-yellow-300"
+            >
+              Pokemon List
+            </a>
           </h1>
           <hr />
         </nav>
